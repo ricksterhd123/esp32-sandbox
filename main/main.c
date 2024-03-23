@@ -58,10 +58,8 @@ void app_main(void)
         }
     }
 
-    fflush(stdout);
     lua_close(L);
 
     fflush(stdout);
-
     esp_restart();
 }
