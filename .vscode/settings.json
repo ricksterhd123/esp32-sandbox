@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "lauxlib.h": "c",
+        "lualib.h": "c",
+        "freertos.h": "c"
+    },
+    "idf.adapterTargetName": "esp32c3",
+    "idf.flashType": "UART",
+    "idf.port": "/dev/ttyACM0",
+    "idf.openOcdConfigs": [
+        "board/esp32c3-ftdi.cfg"
+    ]
+}
