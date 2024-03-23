@@ -2,7 +2,7 @@
 
 Proof of concept embedded Lua scripting in esp32
 
-Tested with esp32-c3 using esp32-idf toolchain
+Tested with esp32-WROOM-32 and esp32-c3 using esp32-idf toolchain
 
 ## Prerequisites
 - GNU/Linux x86 (if using WSL, check [usbipd](https://github.com/dorssel/usbipd-win) with esp32 vscode ext)
