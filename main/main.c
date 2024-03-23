@@ -1,3 +1,4 @@
+#include <math.h>
 #include <stdio.h>
 #include <inttypes.h>
 #include "sdkconfig.h"
@@ -15,7 +16,22 @@
 
 #include "source.h"
 
-extern const char* STRING;
+extern const char *STRING;
+
+static int l_esp_chip_info_cores(lua_State *L)
+{
+    esp_chip_info_t chip_info;
+    esp_chip_info(&chip_info);
+    lua_pushnumber(L, chip_info.cores);
+    return 1;
+}
+
+static int l_sleep(lua_State *L)
+{
+    double ms = lua_tonumber(L, 1);
+    vTaskDelay((int) ms / portTICK_PERIOD_MS);
+    return 1;
+}
 
 void app_main(void)
 {
@@ -23,25 +39,28 @@ void app_main(void)
 
     luaL_openlibs(L);
 
-    printf("Hello\n");
+    lua_pushcfunction(L, l_esp_chip_info_cores);
+    lua_setglobal(L, "getESPChipInfo");
+
+    lua_pushcfunction(L, l_sleep);
+    lua_setglobal(L, "sleep");
 
     int success = luaL_dostring(L, SCRIPT);
     if (success != 0)
     {
-        if (success == LUA_ERRSYNTAX) {
+        if (success == LUA_ERRSYNTAX)
+        {
             printf("Failed to read syntax\n");
         }
-        if (success == LUA_ERRMEM) {
+        if (success == LUA_ERRMEM)
+        {
             printf("Failed to allocatez memory\n");
         }
     }
 
-    vTaskDelay(5000 / portTICK_PERIOD_MS);
-
     fflush(stdout);
     lua_close(L);
 
-    printf("Goodbye\n");
     fflush(stdout);
 
     esp_restart();

@@ -10,6 +10,16 @@ function fizzbuzz(i)
     end
 end
 
+print("Hello")
+local cores = getESPChipInfo()
+print("I have "..tostring(math.floor(cores)).." cores")
+
+sleep(1000)
+
 for i = 1, 100 do
     print(fizzbuzz(i))
+    sleep(100)
 end
+
+print("Goodbye!")
+sleep(10000)

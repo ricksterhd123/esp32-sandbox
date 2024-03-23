@@ -6,3 +6,5 @@ cmake_minimum_required(VERSION 3.16)
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
 project(hello_world)
 
+configure_file(${CMAKE_SOURCE_DIR}/main.lua main.lua)
+execute_process(COMMAND bash ${CMAKE_SOURCE_DIR}/prepare.sh)
