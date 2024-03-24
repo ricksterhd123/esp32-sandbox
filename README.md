@@ -28,3 +28,4 @@ Tested with esp32-WROOM-32 and esp32-c3 using esp32-idf toolchain
 - https://github.com/dorssel/usbipd-win
 - https://github.com/espressif/esp-idf
 - https://github.com/espressif/esp-idf/tree/master/examples/get-started/hello_world
+- https://github.com/espressif/esp-idf/blob/master/examples/peripherals/gpio/generic_gpio/main/gpio_example_main.c
