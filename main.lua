@@ -15,10 +15,12 @@ local cores = getESPChipInfo()
 print("I have "..tostring(math.floor(cores)).." cores")
 
 sleep(1000)
+local LED_PIN = 4
 
 for i = 1, 100 do
+    gpioSetLevel(LED_PIN, i % 2 == 0)
     print(fizzbuzz(i))
-    sleep(100)
+    sleep(1000)
 end
 
 print("Goodbye!")

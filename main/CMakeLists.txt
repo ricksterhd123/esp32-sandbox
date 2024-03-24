@@ -1,7 +1,10 @@
 
 idf_component_register(
-    SRCS "main.c"
+    SRCS 
+    "gpio.c"
+    "gpio.h"
     "source.h"
+    "main.c"
     "lua/lapi.c"
     "lua/lcode.c"
     "lua/lctype.c"
@@ -40,5 +43,5 @@ idf_component_register(
     "lua/luaconf.h"
     INCLUDE_DIRS 
     "." "lua"
-    REQUIRES spi_flash
+    REQUIRES spi_flash driver
     )
